@@ -4,17 +4,19 @@ const path = require('path')
 
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  const mainWindow = new BrowserWindow({ 
+    fullscreen: true, // 无边框
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-
+  mainWindow.loadFile(path.join(__dirname, '/web/index.html'))
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
-
+  // mainWindow.loadFile('index.html')
+  // 最大化
+  mainWindow.maximizable();
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
